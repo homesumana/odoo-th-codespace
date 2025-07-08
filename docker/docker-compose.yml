@@ -1,8 +1,9 @@
-version: '2'
+# version: '2'
 services:
   web:
-    image: poonlap/odoo-th:16.0
-    command: -- --dev=all
+    build: .
+    # image: poonlap/odoo-th:16.0
+    command: -- --dev=all --init base_setup
     depends_on:
       - db
     ports:
