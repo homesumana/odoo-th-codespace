@@ -1,4 +1,4 @@
-ARG VERSION=latest
+ARG VERSION=16.0
 ARG ODOO_IMAGE=odoo:${VERSION}
 FROM ${ODOO_IMAGE}
 ARG VERSION
@@ -15,16 +15,16 @@ RUN apt-get update \
     && cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
 
 # Add Odoo Repository for upgrading and commit the image
-RUN curl https://nightly.odoo.com/odoo.key | apt-key add -
-RUN if [ ${VERSION} = 'latest' ]; then echo "deb http://nightly.odoo.com/16.0/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list; else \
-       echo "deb http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list; fi
+# RUN curl https://nightly.odoo.com/odoo.key | apt-key add -
+# RUN if [ ${VERSION} = 'latest' ]; then echo "deb http://nightly.odoo.com/16.0/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list; else \
+#        echo "deb http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list; fi
 
 # Add OCA modules via git
 # ODOO_VERSION variable is inherited from odoo official image
 RUN mkdir -p /opt/odoo/addons \ 
 	&& cd /opt/odoo/addons \
 	&& git clone --single-branch --branch ${MOD_VERSION} https://github.com/OCA/l10n-thailand.git \
-    	&& git clone --single-branch --branch ${MOD_VERSION} https://github.com/OCA/web.git \
+	&& git clone --single-branch --branch ${MOD_VERSION} https://github.com/OCA/web.git \
 	&& git clone --single-branch --branch ${MOD_VERSION} https://github.com/OCA/partner-contact.git \
 	&& git clone --single-branch --branch ${MOD_VERSION} https://github.com/OCA/server-ux.git \
 	&& git clone --single-branch --branch ${MOD_VERSION} https://github.com/OCA/server-brand.git \
