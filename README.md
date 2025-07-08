@@ -1,12 +1,14 @@
 Odoo Codespace with Thai
 ----------------
-xxx
+combine
+https://github.com/OCA/l10n-thailand
+https://github.com/poonlap/odoo-th
 
 วิธีใช้
 --------
 ```
-$ cd docker-xxx
-$ docker compose up
+cd docker-xx
+docker compose up
 ```
 เปิดเบราเซอร์เข้า URL
 ```
