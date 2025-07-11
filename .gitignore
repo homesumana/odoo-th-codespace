@@ -2,3 +2,8 @@
 th_address/.vscode/settings.json
 th_address_vat/.vscode/settings.json
 odoo.conf
+docker-14/config/odoo.conf
+docker-15/config/odoo.conf
+docker-16/config/odoo.conf
+docker-17/config/odoo.conf
+docker-18/config/odoo.conf
